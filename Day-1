@@ -18,3 +18,42 @@ int main()
 
     return 0;
 }
+
+
+
+https://www.geeksforgeeks.org/sum-triangle-from-array/
+
+int s[5]={0};
+void recur(int k,int last,int arr[])
+{
+    if(k<=last)
+    {
+         s[k]=s[k]+s[k+1];
+         cout<<s[k]<<" ";
+         k++;
+         recur(k,last,arr);
+    }
+}
+
+int main()
+{
+     int arr[5] = { 1,2,3,4,5};
+    int i=0;
+    for(auto &val:arr)
+    {  s[i]=arr[i];
+        cout<<s[i]<<" ";
+        i++;
+    }
+    cout<<endl;
+    // cout<<"after\n";
+    
+    int last=3;
+    for(int j=1;j<=4;j++)
+    {
+        recur(0,last,arr);
+        last--;
+        cout<<endl;
+    }
+
+    return 0;
+}
