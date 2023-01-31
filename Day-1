@@ -1,0 +1,20 @@
+
+https://www.geeksforgeeks.org/program-find-minimum-maximum-element-array/
+int maximum=-100;
+void getmax(int i,int last,int arr[])
+{   
+    if(i<=last)
+    {
+       arr[i]>maximum?getmax(i=i+1,last,arr):i=i+1;
+    }
+    
+}
+
+int main()
+{
+     int arr[] = { 12, 1234, 45, 67, 1 };
+    getmax(0,4,arr);
+    cout<<maximum<<endl;
+
+    return 0;
+}
