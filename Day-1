@@ -192,4 +192,51 @@ int main()
   solve(stack,floor(n/2)+1);
   
    
+   //Reverse a stack using recursion
+   void insert( stack<int> &stack,int temp)
+{
+    if(stack.size()==0)
+    {
+        stack.push(temp);
+        return ;
+    }
+    int value=stack.top();
+    stack.pop();
+    insert(stack,value);
+    stack.push(value);
+    return ;
+}
+
+void reverse(stack<int> &stack)
+{
+    if(stack.size()==0 || stack.size()==1)
+    {
+        return ;
+    }
+    int temp=stack.top();
+    stack.pop();
+    reverse(stack);
+    insert(stack,temp);
+}
+
+int main()
+{
+    
+    int n;
+    cout<<"Enter number of elements \n";
+    cin>>n;
+     stack<int> stack;
+    for(int i=0;i<n;i++)
+    {  cout<<"Enter a number \n";
+        int x;
+        cin>>x;
+        stack.push(x);
+    }
+    
+  reverse(stack);
+  
+   cout<<stack.top();
+
+    return 0;
+}
 
