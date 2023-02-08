@@ -522,3 +522,40 @@ solve(n,one,zero,op);
 }
 
 
+# added josephus problem
+
+void solve(vector<int>& v,int k,int index)
+{
+    if(v.size()==1)
+    {
+        cout<<v[0];
+        return ;
+    }
+    
+    index=(index+k)%v.size();
+    auto it=v.begin()+index;
+    v.erase(it);
+    solve(v,k,index);
+   
+}
+
+int main()
+{
+
+int n,k,index=0;
+vector<int> v;
+cout<<"Enter n and k \n";
+cin>>n>>k;
+k--;
+for(int i=1;i<=n;i++)
+{  
+    v.push_back(i);
+}
+solve(v,k,index);
+
+
+    return 0;
+}
+
+
+
