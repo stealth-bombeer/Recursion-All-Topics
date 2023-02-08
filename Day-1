@@ -486,3 +486,39 @@ para(n);
     return 0;
 }
 
+
+#print n digit binary numbe rsuch that each of which prefixes have no of 1's greater than 0's
+void solve(int n,int one,int zero,string op)
+{
+    if(n==0)
+    {
+        cout<<op<<" ";
+        return ;
+    }
+
+        string op1=op;
+        op1.push_back('1');
+        solve(n-1,one+1,zero,op1);
+
+    if(one>zero)
+    {
+        string op2=op;
+        op2.push_back('0');
+        solve(n- 1,one,zero+ 1,op2);
+    }
+    return ;
+}
+
+int main()
+{
+int n,one=0,zero=0;
+cout<<"Enter n \n";
+cin>>n;
+string op=" ";
+solve(n,one,zero,op);
+
+
+    return 0;
+}
+
+
