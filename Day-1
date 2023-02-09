@@ -202,7 +202,7 @@ int main()
     }
     int value=stack.top();
     stack.pop();
-    insert(stack,value);
+    insert(stack,temp);
     stack.push(value);
     return ;
 }
