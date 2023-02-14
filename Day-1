@@ -560,3 +560,47 @@ solve(v,k,index);
 
 
 
+//print any one subset with sum k
+
+bool solve(int index,int arr[],int n,int count,int sum,vector<int>& v)
+{
+    if(index==n)
+    {
+        if(count==sum)
+        {
+            for(auto &val:v)
+            {
+                cout<<val<<" ";
+            }
+            cout<<endl;
+            return true;
+        }
+        return false;
+    }
+    v.push_back(arr[index]);
+    if(solve(index+1,arr,n,count,sum+arr[index],v)==true)
+    {
+        return true;
+    }
+    v.pop_back();
+    if(solve(index+1,arr,n,count,sum,v)==true)
+    {
+        return true;
+    }
+    return false ;
+    
+}
+
+
+int main()
+{
+    int arr[3]={1,2,1};
+    int n=3;
+    int count=2;
+    vector<int> v;
+    cout<<solve(0,arr,n,count,0,v);
+
+    return 0;
+}
+
+
