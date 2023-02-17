@@ -669,4 +669,55 @@ int main()
 
 
 
+//combination sum-3
+
+
+void solve(int index,int target,vector <int>& arr,vector <int> &v,vector<vector<int>> &ans,int k)
+{
+
+if(v.size()>=k)
+{
+    if(target==0)
+    {
+    ans.push_back(v);
+    for(auto &val:v)
+    {
+        cout<<val<<" ";
+    }
+     cout<<endl;
+    }
+   
+    return ;
+}
+
+if(v.size()<k)
+{
+
+for(int i=index;i<arr.size();i++)
+{
+    if(arr[i]>target) 
+    {break;}
+    v.push_back(arr[i]);
+    solve(i+1,target-arr[i],arr,v,ans,k);
+    v.pop_back();
+}
+
+}
+
+
+}
+
+    vector<vector<int>> combinationSum3(int k, int n)
+    {
+        vector<int> arr{1,2,3,4,5,6,7,8,9};
+       vector<vector<int>> ans ;
+       vector <int> v;
+       if((k*(k+1))/2 >n)
+       {
+           return ans;
+       }
+       solve(0,n,arr,v,ans,k);
+   return ans;
+    }
+
 
