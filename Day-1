@@ -750,4 +750,29 @@ return ;
 
     }
 
+//print all permutation leet
 
+
+    void solve(int index,vector<int> nums,vector<vector<int>> &p)
+{
+    if(index==nums.size())
+    {
+        p.push_back(nums);
+        return ;
+    }
+    for(int i=index;i<nums.size();i++)
+    { 
+        swap(nums[i],nums[index]);
+        solve(index+1,nums,p);
+        swap(nums[i],nums[index]);
+    }
+    return ;
+}
+    vector<vector<int>> permute(vector<int>& nums)
+     {
+                  vector <vector<int>> p;
+         vector<int> opt;
+         solve(0,nums,p);
+         return p;
+        
+    }
