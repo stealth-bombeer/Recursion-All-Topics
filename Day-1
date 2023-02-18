@@ -719,5 +719,35 @@ for(int i=index;i<arr.size();i++)
        solve(0,n,arr,v,ans,k);
    return ans;
     }
+    
+    
+    
+    // subet sum-2 leet 
+    void solve(int index,vector<int> nums,vector<int> opt,vector<vector<int>> &p)
+{
+p.push_back(opt);
+for(int i=index;i<nums.size();i++)
+{
+    if(i>index && nums[i]==nums[i-1])
+    {
+        continue;
+    }
+    opt.push_back(nums[i]);
+    solve(i+1,nums,opt,p);
+    opt.pop_back();
+}
+return ;
+
+}
+
+    vector<vector<int>> subsetsWithDup(vector<int>& nums)
+    {
+         sort(nums.begin(),nums.end());
+         vector <vector<int>> p;
+         vector<int> opt;
+         solve(0,nums,opt,p);
+         return p;
+
+    }
 
 
