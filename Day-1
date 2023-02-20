@@ -915,3 +915,49 @@ bool solve(vector<vector<char>>& board)
      {
      bool x=solve(board);
     }
+
+
+
+//added pallindrome partitioning leet
+   
+int ispallindrome(string s,int start,int end)
+{
+    while(start<end)
+    {
+        if(s[start]!=s[end])
+        {
+            return 0;
+        }
+        start++;
+        end--;
+    }
+return 1;
+}
+
+   void solve(int index,string s,vector<string> opt,vector<vector<string>>& ans,int n)
+   {
+    if(index==n)
+    {
+        ans.push_back(opt);
+        return ;
+    }
+    for(int i=index;i<s.length();i++)
+    {
+        
+        if(ispallindrome(s,index,i))
+        {
+         opt.push_back(s.substr(index,i-index+1));
+         solve(i+1,s,opt,ans,n);
+         opt.pop_back();
+        }
+    }
+
+   }
+
+    vector<vector<string>> partition(string s) 
+    {
+      vector<vector<string>> ans;
+      vector<string> opt;
+      solve(0,s,opt,ans,s.length());
+return ans;
+    }
